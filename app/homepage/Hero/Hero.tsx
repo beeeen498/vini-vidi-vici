@@ -78,7 +78,7 @@ const Hero = () => {
     }, [isMobile]);
 
   return (
-    <section className={styles.hero}>
+    <section id="hero" className={styles.hero}>
         {/* video */}
         <div className={styles.videoWrapper}>
             <video

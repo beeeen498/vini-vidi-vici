@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Mona_Sans } from "next/font/google";
+import Header from "@/components/Header/Header";
 import "../styles/main.scss"
 
 export const metadata: Metadata = {
@@ -34,6 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${monaSans.variable} ${playfair.variable}`}>
       <body>
+        <Header />
         {children}
       </body>
     </html>
