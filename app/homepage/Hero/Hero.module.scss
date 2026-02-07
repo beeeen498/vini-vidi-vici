@@ -1,0 +1,74 @@
+.hero {
+    position: relative;
+    height: 200vh; 
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: top;
+
+    .heroVideo {
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        top: 0;
+        object-fit: cover;
+        z-index: 0;
+    }
+
+    .noiseFilter {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("/images/Hero/noise.png") repeat;
+        opacity: 0.5;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    .heroContent {
+        position: relative;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        height: 100vh;
+        padding: 20px;
+        width: 100%;
+
+        .heroHeading {
+            margin-top: 200px;
+            font-size: 200px;
+            color: #bec3cb;
+        }
+
+        .heroText{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            .heroSlogan{
+                color: var(--gold);
+                font-size: 50px;
+            }
+
+            .heroParagraph{
+                width: 280px;
+                font-size: 18px;
+            }
+
+            .paragraphAndBtn{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                button{
+                    width: 100px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

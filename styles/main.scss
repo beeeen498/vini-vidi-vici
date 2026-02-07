@@ -1,0 +1,39 @@
+// variables
+:root {
+    // colors
+    --black: #050505;
+    --gold: #E6D393;
+    --body-font-color: #e7e9ec;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    color: var(--body-font-color);
+    background-color: var(--black);
+    font-family: var(--body-font);
+}
+
+h1, h2, h3, h4{
+    font-family: var(--heading-font);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    all: unset;
+    text-transform: uppercase;
+    border: 1px solid white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background-color: white;
+    color: var(--black);
+    cursor: pointer;
+}
