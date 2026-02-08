@@ -19,7 +19,7 @@ const Header = () => {
   return (
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
         {/* logo */}
-        <Link href="#hero"><img  src="/images/logo.png" alt="logo" /></Link>
+        <Link href="#hero"><img className="logo"  src="/images/logo.png" alt="logo" /></Link>
 
         {/* nav */}
         <Nav />

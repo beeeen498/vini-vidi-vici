@@ -30,7 +30,6 @@
     .socialIcons{
         z-index: 4;
         display: flex;
-        margin-top: 15px;
         gap: 20px;
     }
 
@@ -56,9 +55,16 @@
             justify-content: space-between;
             width: 100%;
 
-            .heroSlogan{
-                color: var(--gold);
-                font-size: 50px;
+            .sloganAndIcons{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                
+
+                .heroSlogan{
+                    color: var(--gold);
+                    font-size: 50px;
+                }
             }
 
             .heroParagraph{

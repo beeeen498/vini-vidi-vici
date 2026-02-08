@@ -104,7 +104,7 @@ const Hero = () => {
             {/* hero main text */}
             <div className={styles.heroText}>
                 {/* slogan */}
-                <div>
+                <div className={styles.sloganAndIcons}>
                     <h2 className={`${styles.heroSlogan} ${styles.subtitle}`}>
                         Lose Yourself to <br /> Italian Flavor
                     </h2>
