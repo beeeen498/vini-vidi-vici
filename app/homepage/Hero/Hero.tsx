@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/all";
 import styles from "./Hero.module.scss";
 import { useMediaQuery } from "react-responsive";
+import SocialsIcons from "@/components/SocialsIcons/SocialsIcons";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -103,9 +104,16 @@ const Hero = () => {
             {/* hero main text */}
             <div className={styles.heroText}>
                 {/* slogan */}
-                <h2 className={`${styles.heroSlogan} ${styles.subtitle}`}>
-                    Lose Yourself to <br /> Italian Flavor
-                </h2>
+                <div>
+                    <h2 className={`${styles.heroSlogan} ${styles.subtitle}`}>
+                        Lose Yourself to <br /> Italian Flavor
+                    </h2>
+
+                    {/* socials icons */}
+                    <div className={styles.socialIcons}>
+                        <SocialsIcons size={25}/>
+                    </div>
+                </div>
 
                 {/* pargragraph */}
                 <div className={styles.paragraphAndBtn}>

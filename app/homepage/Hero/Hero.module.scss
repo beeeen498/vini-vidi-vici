@@ -27,6 +27,13 @@
         z-index: 1;
     }
 
+    .socialIcons{
+        z-index: 4;
+        display: flex;
+        margin-top: 15px;
+        gap: 20px;
+    }
+
     .heroContent {
         position: relative;
         z-index: 3;
