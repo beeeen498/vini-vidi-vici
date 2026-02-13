@@ -1,0 +1,61 @@
+.about{
+    background-color: black;
+    // height: 100vh;
+    padding: 30px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+
+    .aboutMainContent{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 40%;
+        
+        .text{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            h2{
+                font-size: 60px;
+            }
+    
+            h3{
+                color: var(--gold);
+            }
+        }
+
+    }
+
+    .galleryGrid{
+        display: grid;
+        grid-template-columns: 1fr 0 repeat(5, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        height: 600px;
+        flex: 1;
+        gap: 15px;
+
+        .gridItem1 { grid-area: 1 / 1 / 2 / 5; }
+        .gridItem2 { grid-area: 1 / 5 / 2 / 8; }
+        .gridItem3 { grid-area: 2 / 1 / 3 / 6; }
+        .gridItem4 { grid-area: 2 / 6 / 4 / 8; }
+        .gridItem5 { grid-area: 3 / 1 / 4 / 4; }
+        .gridItem6 { grid-area: 3 / 4 / 4 / 6; }
+
+        .gridItem1,
+        .gridItem2,
+        .gridItem3,
+        .gridItem4,
+        .gridItem5,
+        .gridItem6{
+            position: relative;
+            overflow: hidden;
+            object-fit: contain;
+            border-radius: 30px;
+            z-index: 0;
+        }
+    }
+}
