@@ -1,0 +1,52 @@
+.featuredItems{
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    padding: 0 20px;
+    top: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .popularCocktails,
+    .popularMocktails{
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        gap: 32px;
+        width: 310px;
+
+        h2{
+            // margin-bottom: 32px;
+            text-transform: capitalize;
+        }
+
+        ul{
+            .listItemsContainer{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                .popularListItem{
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 20px;
+        
+                    .listItemDetails{
+                        h3{
+                            color: var(--gold);
+                            text-transform: capitalize;
+                        }
+                        
+                    }
+                }
+        
+                .listItemPrice{
+                    font-weight: 500;
+                    font-size: 20px;
+                }
+            }
+        }
+
+    }
+}

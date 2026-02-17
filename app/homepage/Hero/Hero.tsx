@@ -83,12 +83,12 @@ const Hero = () => {
         {/* video */}
         <div className={styles.videoWrapper}>
             <video
-            ref={videoRef}
-            src="/videos/hero/wine.mp4"
-            muted
-            playsInline
-            preload="auto"
-            className={styles.heroVideo}
+                ref={videoRef}
+                src="/videos/hero/wine.mp4"
+                muted
+                playsInline
+                preload="auto"
+                className={styles.heroVideo}
             />
         </div>
 
