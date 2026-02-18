@@ -4,14 +4,16 @@
     width: 100%;
     overflow: hidden;
     display: flex;
-    align-items: top;
+    align-items: flex-start;
+    font-family: "Mona Sans", sans-serif;
 
-    .videoWrapper{
-        position: absolute;
-        display: flex;
-        height: 100%;
-        width: 100%;
-        align-items: start;
+    // video wrapper
+    .videoWrapper {
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: flex-start;
 
         .heroVideo {
             position: relative;
@@ -23,7 +25,7 @@
         }
     }
 
-
+    // noise overlay
     .noiseFilter {
         position: absolute;
         bottom: 0;
@@ -36,12 +38,7 @@
         z-index: 1;
     }
 
-    .socialIcons{
-        z-index: 4;
-        display: flex;
-        gap: 20px;
-    }
-
+    // main content
     .heroContent {
         position: relative;
         z-index: 3;
@@ -53,44 +50,53 @@
         padding: 20px;
         width: 100%;
 
+        // heading
         .heroHeading {
             margin-top: 200px;
             font-size: 200px;
             color: #bec3cb;
+            visibility: hidden; 
         }
 
-        .heroText{
+        // text blocks
+        .heroText {
             display: flex;
             justify-content: space-between;
             width: 100%;
 
-            .sloganAndIcons{
+            .sloganAndIcons {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                
 
-                .heroSlogan{
-                    color: var(--gold);
-                    font-size: 50px;
+                .heroSlogan {
+                color: var(--gold);
+                font-size: 50px;
+                visibility: hidden; 
+                }
+
+                .socialIcons {
+                z-index: 4;
+                display: flex;
+                gap: 20px;
                 }
             }
 
-            .heroParagraph{
-                width: 280px;
-                font-size: 18px;
-            }
-
-            .paragraphAndBtn{
+            .paragraphAndBtn {
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
 
-                button{
+                .heroParagraph {
+                    width: 280px;
+                    font-size: 18px;
+                    visibility: hidden; 
+                }
+
+                button {
                     width: 100px;
-                    text-align: center;
                 }
             }
         }
-    }
+    }   
 }

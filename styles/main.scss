@@ -41,8 +41,15 @@ button {
     padding: 10px 20px;
     border-radius: 30px;
     background-color: white;
+    text-align: center;
     color: var(--black);
     cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-color: var(--gold);
+    }
 }
 
 .logo{
