@@ -114,7 +114,7 @@ const Hero = () => {
       <div className={styles.videoWrapper}>
         <video
           ref={videoRef}
-          src="/videos/hero/wine.mp4"
+          src="/videos/Hero/wine.mp4"
           muted
           playsInline
           preload="auto"
