@@ -1,4 +1,113 @@
-.contactContainer{
-    height: 70vh;
-    padding: 30px;
+.contactContainer {
+    height: 80vh;
+    padding: 30px 100px;
+    background-color: white;
+    color: black;
+    
+    .contactContent{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        justify-content: center;
+        gap: 200px;
+        height: 100%;
+    }
+
+    // video
+    .contactVideoContainer {
+        position: relative;
+        height: 100%;
+
+        .contactVideo {
+            height: 100%;
+            width: 100%;
+            border-radius: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .videoLines {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            pointer-events: none;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 33% 0;
+
+            .line {
+                background-color: white;
+                height: 7px;
+                width: 100%;
+            }
+        }
+    }
+
+    // form
+    .contactUsForm{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 40px;
+
+        // headings
+        .contactUsHeading{
+            text-align: center;
+
+            h2{
+                font-size: 70px;
+            }
+        
+            h3{
+                font-weight: 400;
+            }
+        }
+    
+        /* input */
+        .contactUsInputs{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+
+            .contactUsInputs{
+                display: flex;
+                flex-direction: column;
+            }
+        
+            .contactUsInput{
+                all: unset;
+                border: 2px solid var(--black);
+                padding: 10px;
+                background-color: var(--white);
+                white-space: pre-wrap; 
+                overflow-wrap: break-word; 
+            }
+        
+            .contactUsTextarea{
+                height: 150px;
+            }
+        
+            // btn
+            .sendButton{
+                color: var(--black);
+                text-align: center;
+            }
+        
+            .sendButton:hover{
+                cursor: pointer;
+                transform: scale(103%);
+                transition: 1s;
+            }
+        
+            .sendButtonClicked{
+                background-color: var(--black);
+                color: white;
+                transition: 0.5s;
+                text-align: center;
+            }
+        }
+    }
 }

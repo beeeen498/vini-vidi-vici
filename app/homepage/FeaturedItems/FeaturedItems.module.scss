@@ -12,6 +12,7 @@
     .popularMocktails{
         display: flex;
         flex-direction: column;
+        will-change: transform, opacity;
         padding: 20px;
         gap: 32px;
         width: 310px;
