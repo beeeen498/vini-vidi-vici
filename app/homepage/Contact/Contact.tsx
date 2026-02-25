@@ -1,9 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 import styles from "./Contact.module.scss";
 
 const Contact = () => {
+  const headerHeight = 70;
   const [isClicked, setIsClicked] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -30,12 +34,38 @@ const Contact = () => {
 
     setIsClicked(true);
 
-    // here you would send to backend
+    setTimeout(() => {
+      setIsClicked(false);
+    }, 2500);
 
     setTimeout(() => {
       setFormData({ name: "", email: "", message: "" });
     }, 1500);
   }
+
+  // animate leaves
+  const rightLeafRef = useRef<HTMLImageElement | null>(null);
+  const leftLeafRef = useRef<HTMLImageElement | null>(null);
+
+  useEffect(() => {
+    if (!rightLeafRef.current || !leftLeafRef.current) return;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#contact",
+        start: "top top+=70",
+        end: "bottom top",
+        scrub: true,
+      },
+    });
+
+    tl.to(rightLeafRef.current, { y: -300 }, 0)
+      .to(leftLeafRef.current, { y: 300 }, 0);
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
 
   return (
     <section id="contact" className={styles.contactContainer}>
@@ -60,9 +90,10 @@ const Contact = () => {
         {/* form */}
         <form className={styles.contactUsForm} onSubmit={handleSubmit}>
           <div className={styles.contactUsHeading}>
-            <h2>contact us</h2>
+            <h2>Get in Touch</h2>
             <h3>
-              Have questions? Want to hear more details? Reach out to us!
+              Have a question about our menu, private dining, or special events? 
+              We’d be delighted to hear from you.
             </h3>
           </div>
 
@@ -107,6 +138,22 @@ const Contact = () => {
             </button>
           </div>
         </form>
+      </div>
+
+      {/* leaves */}
+      <div className={styles.leavesDiv}>
+        <img 
+          ref={rightLeafRef}
+          className={`${styles.rightLeaf}`}
+          src="/images/Contact/right-leaf.png" 
+          alt="leaf" 
+        />
+        <img 
+          ref={leftLeafRef}
+          className={`${styles.leftLeaf}`}
+          src="/images/Contact/left-leaf.png" 
+          alt="leaf" 
+        />
       </div>
     </section>
   );
