@@ -1,0 +1,93 @@
+.reservationSection {
+    position: relative;
+    height: 70vh;
+    background-color: var(--black);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    color: var(--white);
+    scroll-margin-top: 70px;
+    overflow: hidden;
+
+    // video
+    .reserveVideo{
+        position: absolute;
+        object-fit: cover;
+        object-position: center;
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+        filter: brightness(30%);
+    }
+
+    // title
+    .sectionTitle {
+        text-align: center;
+        font-size: 40px;
+        margin-bottom: 10px;
+        z-index: 2;
+        color: var(--gold);
+    }
+
+    // form
+    .reservationForm {
+        display: flex;
+        gap: 50px;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        max-width: 800px;
+        z-index: 2;
+
+        .formField {
+            display: flex;
+            flex-direction: column;
+            flex: 1 1 200px;
+        }
+    
+        .formLabel {
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 16px;
+        }
+    
+        .formSelect {
+            all: unset;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid var(--gray-dark);
+            background-color: white;
+            font-size: 16px;
+            color: var(--black);
+            transition: border 0.2s;
+    
+            &:focus {
+                outline: none;
+                border-color: var(--black);
+                box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+            }
+
+            &::placeholder{
+                color: var(--black);
+            }
+        }
+    
+        .formActions {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+    
+        .submitButton {
+    
+            &:disabled {
+                background-color: var(--gray-dark);
+                cursor: not-allowed;
+            }
+        }
+    }
+}

@@ -1,5 +1,6 @@
 .about{
-    background-color: black;
+    background-color: #f4f5f7;
+    color: var(--black);
     scroll-margin-top: 70px;
     padding: 30px;
     display: flex;
@@ -20,12 +21,12 @@
             h2{
                 font-size: 60px;
             }
-    
-            h3{
-                color: var(--gold);
-            }
+
         }
 
+        button{
+            border: 1px solid var(--black);
+        }
     }
 
     .galleryGrid{
