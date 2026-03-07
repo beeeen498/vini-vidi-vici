@@ -113,3 +113,5 @@ const ReserveTable = () => {
 };
 
 export default ReserveTable;
+
+// TODO - make sure that if the current time is past the offered times in time select, make them crossed out 
