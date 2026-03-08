@@ -111,6 +111,7 @@ const Hero = () => {
 
   return (
     <section id="hero" className={styles.hero} ref={containerRef}>
+      {/* video */}
       <div className={styles.videoWrapper}>
         <video
           ref={videoRef}
@@ -122,24 +123,30 @@ const Hero = () => {
         />
       </div>
 
+      {/* filter */}
       <div className={styles.noiseFilter}></div>
 
+      {/* content */}
       <div className={styles.heroContent}>
+        {/* heading */}
         <h1 ref={headingRef} className={styles.heroHeading}>
           Veni, Vidi, Vici
         </h1>
 
+        {/* main text */}
         <div className={styles.heroText}>
           <div className={styles.sloganAndIcons}>
             <h2 className={`${styles.heroSlogan} ${styles.subtitle}`}>
               Lose Yourself to <br /> Italian Flavor
             </h2>
 
+            {/* icons */}
             <div className={styles.socialIcons}>
               <SocialsIcons size={25} />
             </div>
           </div>
 
+          {/* paragraph */}
           <div className={styles.paragraphAndBtn}>
             <p className={`${styles.heroParagraph} ${styles.subtitle}`}>
               Vini Vidi Vici serves modern Italian cuisine crafted from fresh
