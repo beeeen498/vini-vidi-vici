@@ -176,13 +176,19 @@
     .hero {
         .heroContent {
             .heroText {
+                .sloganAndIcons{
+                    .heroSlogan{
+                        font-size: 40px;
+                    }
+                }
+
 
                 .paragraphAndBtn {
                     flex-direction: column;
                     justify-content: center;
 
                     .heroParagraph{
-                        text-align: justify;
+                        text-align: center;
                     }
                 }
 

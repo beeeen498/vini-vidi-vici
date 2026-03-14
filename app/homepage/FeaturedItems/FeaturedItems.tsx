@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cocktailLists, mockTailLists } from "./data/featuredItemsList";
 import type { Drink } from "./data/featuredItemsList";
+import { useMediaQuery } from "react-responsive";
 import styles from "./FeaturedItems.module.scss";
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,6 +17,8 @@ const FeaturedItems = () => {
     const cocktailsRef = useRef<HTMLUListElement | null>(null);
     const mocktailsRef = useRef<HTMLUListElement | null>(null);
 
+    const isMobile = useMediaQuery({ maxWidth: 740 });
+
     useEffect(() => {
         gsap.from([cocktailsRef.current, mocktailsRef.current], {
             x: (i) => (i === 0 ? -150 : 150),
@@ -24,7 +27,7 @@ const FeaturedItems = () => {
             ease: "power3.out",
             scrollTrigger: {
             trigger: cocktailsRef.current,
-            start: "bottom 95%",
+            start: isMobile ? "top 25%" : "bottom 95%",
             toggleActions: "play none none none",
             },
         });
