@@ -14,18 +14,17 @@ const About = () => {
 
   useEffect(
     () => {
-      gsap.from(gridRef.current!.children, {
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 50%",
-        },
-        opacity: 0,
-        y: 80,
-        scale: 0.95,
-        duration: 1,
-        ease: "power3.out",
-        stagger: 0.15,
-      });
+        gsap.from(gridRef.current!.children, {
+            scrollTrigger: {
+                trigger: sectionRef.current,
+                start: "top 30%",
+            },
+            opacity: 0,
+            y: 80,
+            duration: 1,
+            ease: "power3.out",
+            stagger: 0.15,
+        });
     },
   );
 
@@ -36,8 +35,8 @@ const About = () => {
             <div className={styles.text}>
                 <h2>Italian Cuisine, Done the Right Way</h2>
                 <p>
-                We bring classic Italian flavors, stripped of the bullshit and elevated
-                with precision, passion, and fire.
+                    We bring classic Italian flavors, stripped of the bullshit and elevated
+                    with precision, passion, and fire.
                 </p>
                 <h3>Good food. Great wine. No excuses.</h3>
             </div>
@@ -57,6 +56,7 @@ const About = () => {
                     src="/images/AboutUs/image-1.jpg"
                     alt="food"
                     fill
+                    priority 
                     style={{ objectFit: "cover", objectPosition: "center" }}
                 />
             </div>
@@ -65,6 +65,7 @@ const About = () => {
                     src="/images/AboutUs/image-2.jpg"
                     alt="food"
                     fill
+                    priority 
                     style={{ objectFit: "cover", objectPosition: "center" }}
                 />
             </div>
@@ -73,6 +74,7 @@ const About = () => {
                     src="/images/AboutUs/image-3-v2.jpg"
                     alt="food"
                     fill
+                    priority 
                     style={{ objectFit: "cover", objectPosition: "center" }}
                 />
             </div>
@@ -81,6 +83,7 @@ const About = () => {
                     src="/images/AboutUs/image-4.jpg"
                     alt="food"
                     fill
+                    priority 
                     style={{ objectFit: "cover", objectPosition: "center" }}
                 />
             </div>
@@ -89,6 +92,7 @@ const About = () => {
                     src="/images/AboutUs/image-5.jpg"
                     alt="food"
                     fill
+                    priority 
                     style={{ objectFit: "cover", objectPosition: "center" }}
                 />
             </div>
@@ -97,6 +101,7 @@ const About = () => {
                     src="/images/AboutUs/image-6.jpg"
                     alt="food"
                     fill
+                    priority 
                     style={{ objectFit: "cover", objectPosition: "center" }}
                 />
             </div>
