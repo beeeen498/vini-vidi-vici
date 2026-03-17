@@ -67,7 +67,7 @@
             &:focus {
                 outline: none;
                 border-color: var(--black);
-                box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+                box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
             }
 
             &::placeholder{
@@ -87,6 +87,27 @@
             &:disabled {
                 background-color: var(--gray-dark);
                 cursor: not-allowed;
+            }
+        }
+    }
+}
+
+// responsiveness
+@media (max-width: 790px){
+    .reservationSection{
+        .reservationForm{
+            flex-direction: column;
+            align-items: center;
+            gap: 20px; // 👈 זה הרווח ביניהם
+
+            .formField {
+                width: 100%;      // 👈 כל השדות אותו רוחב
+                max-width: 300px; // 👈 מגביל שלא יהיו ענקיים
+                flex: unset;      // 👈 מבטל את ההתנהגות הקודמת
+            }
+
+            .formSelect {
+                width: 100%; // 👈 שהinput ימלא את כל השדה
             }
         }
     }
