@@ -73,9 +73,9 @@
 
                 .heroSlogan {
                     color: var(--gold);
-                    font-size: 50px;
+                    font-size: clamp(16px, 50px, 200px);
                     visibility: hidden; 
-                    
+                    width: 100%;
                 }
 
                 .socialIcons {
@@ -176,12 +176,12 @@
     .hero {
         .heroContent {
             .heroText {
+                text-align: center;
                 .sloganAndIcons{
                     .heroSlogan{
                         font-size: 40px;
                     }
                 }
-
 
                 .paragraphAndBtn {
                     flex-direction: column;
@@ -195,5 +195,26 @@
             }
         }
     }
+}
 
+@media (max-width: 364px) {
+    .hero {
+        .heroContent {
+            .heroText {
+                .sloganAndIcons {
+                    .heroSlogan {
+                        font-size: clamp(16px, 13vw, 40px);
+                        white-space: nowrap;
+                    }
+                }
+
+                .paragraphAndBtn {
+                    .heroParagraph{
+                        text-align: center;
+                        font-size: clamp(16px, 1vw, 40px);
+                    }
+                }
+            }
+        }
+    }
 }
