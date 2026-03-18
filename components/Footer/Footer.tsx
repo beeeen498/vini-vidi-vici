@@ -10,8 +10,8 @@ const Footer = () => {
             {/* left */}
             <div className={styles.footerLeft}>
                 <h4>Opening Hours:</h4>
-                <p>Sun-Thu: 12:00 - 23: 00</p>
-                <p>Fri-Sat: 12:00 - 00:00</p>
+                <p>Sun-Thu: <span>12:00 - 23:00</span></p>
+                <p>Fri-Sat: <span>12:00 - 00:00</span></p>
             </div>
 
             {/* middle */}
@@ -29,7 +29,7 @@ const Footer = () => {
 
         {/* credits */}
         <div className={styles.footerCredits}>
-            <p>Created by <Link href={""}>Ben Kedem.</Link> <Link href="">Credits for Images</Link></p>
+            <p>Created by <span><Link href={""}>Ben Kedem.</Link></span> <span><Link href="">Credits for Images</Link></span></p>
         </div>
     </footer>
   )
