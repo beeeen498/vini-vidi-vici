@@ -91,10 +91,10 @@ const Contact = () => {
         <form className={styles.contactUsForm} onSubmit={handleSubmit}>
           <div className={styles.contactUsHeading}>
             <h2>Get in Touch</h2>
-            <h3>
+            <p>
               Have a question about our menu, private dining, or special events? 
               We’d be delighted to hear from you.
-            </h3>
+            </p>
           </div>
 
           <div className={styles.contactUsInputs}>

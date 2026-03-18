@@ -98,16 +98,16 @@
         .reservationForm{
             flex-direction: column;
             align-items: center;
-            gap: 20px; // 👈 זה הרווח ביניהם
+            gap: 20px; 
 
             .formField {
-                width: 100%;      // 👈 כל השדות אותו רוחב
-                max-width: 300px; // 👈 מגביל שלא יהיו ענקיים
-                flex: unset;      // 👈 מבטל את ההתנהגות הקודמת
+                width: 100%;      
+                max-width: 300px; 
+                flex: unset;     
             }
 
             .formSelect {
-                width: 100%; // 👈 שהinput ימלא את כל השדה
+                width: 100%; 
             }
         }
     }
