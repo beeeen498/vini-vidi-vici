@@ -20,6 +20,7 @@ const MenuItemCard = ({title, description, price, image}: Props) => {
           src={image || "/images/menu/placeholder.jpg"}
           alt={title}
           fill
+          sizes="(max-width: 768px) 100vw, 250px"
           className={styles.menuItemImg}
         />
       </div>

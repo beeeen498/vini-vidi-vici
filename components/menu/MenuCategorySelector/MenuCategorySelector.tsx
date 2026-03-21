@@ -6,60 +6,62 @@ import menuData from "@/components/menu/data/menuData";
 const MenuCategorySelector = () => {
     const [SelectedCategory, setSelectedCategory] = useState("Appetizers");
     const [drinksExpanded, setDrinksExpanded] = useState(false);
+
     const toggleDrinks = () => setDrinksExpanded(!drinksExpanded);
 
     const categories = {
-        Food: ["Appetizers", "Pasta", "Pizza", "Main Courses", "Desserts"],
-        Drinks: ["Wine", "Cocktails", "Mocktails"],
+        Food: menuData.food.map(cat => cat.title), // ["Appetizers", ...]
+        Drinks: menuData.drinks.map(cat => cat.title), // ["Cocktails", "Mocktails", "Wines"]
     };
 
     const handleClick = (id: string) => {
-        const el = document.getElementById(id);
-        if (el) {
-            el.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById(id);
+    if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+            setSelectedCategory(id);
+            setDrinksExpanded(false); 
         }
     };
 
     return (
         <div className={styles.categorySelectorContainer}>
+        
             {/* fading line */}
             <div className={styles.fadingLine}></div>
 
-            {/* categories */}
             <div className={styles.categories}>
                 {/* main categories */}
                 <div className={styles.mainCategories}>
-                    {/* foods */}
-                    {menuData.food.map((category) => (
-                      <button
-                        key={category.id}
-                        onClick={() => handleClick(category.id)}
-                        className={styles.categoryButton}
-                      >
-                        {category.title}
-                      </button>
+                    {menuData.food.map(category => (
+                        <button
+                            key={category.id}
+                            onClick={() => handleClick(category.id)}
+                            className={styles.categoryButton}
+                        >
+                            {category.title}
+                        </button>
                     ))}
 
-                    {/* Drinks */}
-                    <button className={styles.categoryButton} onClick={() => setDrinksExpanded(!drinksExpanded)}>
-                      Drinks
+                    {/* Drinks toggle */}
+                    <button className={styles.categoryButton} onClick={toggleDrinks}>
+                        Drinks
                     </button>
                 </div>
 
-                {/* sub categories */}
+                {/* drinks sub-categories */}
                 <div className={`${styles.subCategories} ${drinksExpanded ? styles.show : ""}`}>
-                    {categories.Drinks.map((item) => (
+                    {menuData.drinks.map(category => (
                         <button
-                            key={item}
+                            key={category.id}
                             className={styles.subCategoryItem}
-                            onClick={() => setSelectedCategory(item)}
+                            onClick={() => handleClick(category.id)}
                         >
-                            {item}
+                            {category.title}
                         </button>
                     ))}
                 </div>
             </div>
-
+            
             {/* fading line */}
             <div className={styles.fadingLine}></div>
         </div>

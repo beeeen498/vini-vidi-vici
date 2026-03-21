@@ -80,13 +80,9 @@
             object-fit: contain;
             pointer-events: none;
         }
-
-        .foodCategory {
-            scroll-margin-top: 110px;
-        }
     }
 
-  // DRINKS SECTION
+    // DRINKS SECTION
     .drinksSection {
         display: flex;
         flex-wrap: wrap;
@@ -100,6 +96,10 @@
                 text-align: left;
             }
         }
+    }
+
+    .foodCategory, .drinkCategory {
+        scroll-margin-top: 110px;
     }
 
     // WHITE
