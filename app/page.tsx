@@ -1,13 +1,12 @@
-import styles from "./home.module.scss";
-import Hero from "./homepage/Hero/Hero";
-import FeaturedItems from "./homepage/FeaturedItems/FeaturedItems";
-import About from "./homepage/About/About";
-import ReserveTable from "./homepage/ReserveTable/ReserveTable";
-import Contact from "./homepage/Contact/Contact";
+import Hero from "../components/home/Hero/Hero";
+import FeaturedItems from "../components/home/FeaturedItems/FeaturedItems";
+import About from "../components/home/About/About";
+import ReserveTable from "../components/home/ReserveTable/ReserveTable";
+import Contact from "../components/home/Contact/Contact";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
+    <div>
       <Hero />
       <FeaturedItems />
       <About />

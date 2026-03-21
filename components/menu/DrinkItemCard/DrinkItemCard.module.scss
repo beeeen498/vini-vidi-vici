@@ -1,0 +1,19 @@
+.drinkItemCard{
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0;
+
+    .titleAndPrice{
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 0;
+
+        .drinkTitle{
+            text-transform: uppercase;
+        }
+    }
+}
+
+.drinkItemCard .titleAndPrice {
+  border-bottom: 1px solid currentColor;
+}

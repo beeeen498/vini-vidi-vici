@@ -1,0 +1,52 @@
+.menuItemCard{
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+
+    // image
+    .menuItemImgWrapper {
+        position: relative;
+        height: 150px;
+        width: 250px;
+        overflow: hidden; 
+
+        .menuItemImg {
+            object-fit: cover;
+            object-position: center;
+            z-index: 3;
+        }
+    }
+
+    // details
+    .menuDetails{
+        display: flex;
+        flex: 1;
+        border-bottom: 1px solid var(--gold);
+        justify-content: space-between;
+        
+        .menuItemText{
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+
+            h3{
+                color: var(--gold);
+                font-size: clamp(16px, 2vw, 28px);
+                text-transform: capitalize;
+            }
+    
+            p{
+                max-width: 70%;
+                margin-top: auto;
+                margin-bottom: auto;
+            }
+        }
+
+        .menuItemPrice{
+            width: 200px;
+            color: var(--gold);
+            font-size: clamp(16px, 2vw, 28px);
+            text-align: end;
+        }
+    }
+}

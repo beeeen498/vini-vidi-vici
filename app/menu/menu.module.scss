@@ -1,0 +1,134 @@
+.menuPage {
+    padding: 100px 50px;
+    position: relative;
+
+    // filter
+    .noiseFilter {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url("/images/Hero/noise.png") repeat;
+        opacity: 0.5;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    // arrow
+    .arrowIcon {
+        position: fixed;
+        bottom: 50px;
+        right: 50px;
+        cursor: pointer;
+        pointer-events: none;
+        z-index: 1000;
+        opacity: 0;
+        transition: 0.5s;
+
+        &:hover {
+            transform: translateY(-5px);
+        }
+    }
+
+    .show {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    // title
+    .menuTitleContainer {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+
+        h2 {
+            font-size: clamp(20px, 5vw, 50px);
+            color: var(--gold);
+        }
+
+        h3 {
+            font-size: clamp(20px, 3vw, 50px);
+        }
+
+        p {
+            font-weight: 300;
+        }
+    }
+
+    // MAIN MENU
+    .mainMenu {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 30px;
+
+        h2 {
+            text-align: center;
+            color: var(--gold);
+            font-size: clamp(30px, 4vw, 40px);
+        }
+
+        .categoryDecoration {
+            position: relative;
+            height: 20px;
+            margin: 20px 0;
+        }
+
+        .menuDecorationImg {
+            object-fit: contain;
+            pointer-events: none;
+        }
+
+        .foodCategory {
+            scroll-margin-top: 110px;
+        }
+    }
+
+  // DRINKS SECTION
+    .drinksSection {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .drinkCategory {
+            min-width: 33.3%;
+            padding: 20px;
+
+            h2{
+                text-align: left;
+            }
+        }
+    }
+
+    // WHITE
+    .variant0 {
+        background: var(--white);
+        color: var(--black);
+
+        h2 {
+            color: var(--gold);
+        }
+    }
+
+    // BLACK
+    .variant1 {
+        background: var(--black);
+        color: var(--white);
+
+        h2 {
+            color: var(--gold);
+        }
+    }
+
+    // GOLD
+    .variant2 {
+        background: var(--gold);
+        color: var(--black);
+
+        h2 {
+            color: var(--black);
+        }
+    }
+}

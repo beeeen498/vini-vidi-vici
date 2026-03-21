@@ -1,0 +1,74 @@
+.categorySelectorContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    align-items: center;
+
+    .fadingLine {
+        width: 100px;
+        height: 2px;
+        background: linear-gradient(to right, transparent, var(--gold), transparent);
+        margin: 10px 0;
+    }
+    
+    .categories {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+    
+        .mainCategories {
+            display: flex;
+            gap: 10px;
+            flex-wrap: nowrap;
+            justify-content: center;
+            height: 100%;
+        }
+    
+        .categoryButton {
+            all: unset;
+            border: 1px solid var(--gold);
+            padding: 5px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: center;
+    
+            &:hover {
+                background-color: var(--gold);
+                color: #000;
+            }
+        }
+    
+        .subCategories {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.5s, max-height 0.5s;
+        }
+    
+        .subCategories.show {
+            opacity: 1;
+            max-height: 100px; // enough for 1 row
+        }
+    
+        .subCategoryItem {
+            all: unset;
+            border: 1px solid var(--gold);
+            padding: 5px 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s;
+    
+            &:hover {
+                background-color: var(--gold);
+                color: #000;
+            }
+        }
+    }
+}

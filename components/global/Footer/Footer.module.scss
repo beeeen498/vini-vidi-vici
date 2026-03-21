@@ -13,8 +13,10 @@
         .footerLeft{
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             gap: 20px;
             flex: 1;
+            height: 130px;
 
             .openingHours{
                 display: flex;
@@ -28,7 +30,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: space-between;
             gap: 20px;
+            height: 130px;
 
             img{
                 height: 50px;

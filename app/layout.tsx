@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Mona_Sans } from "next/font/google";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
-import "./styles/main.scss"
+import Header from "@/components/global/Header/Header";
+import Footer from "@/components/global/Footer/Footer";
+import "@/styles/main.scss"
 
 export const metadata: Metadata = {
   title: "Veni Vidi Vici",

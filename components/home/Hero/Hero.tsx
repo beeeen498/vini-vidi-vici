@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/all";
 import styles from "./Hero.module.scss";
 import { useMediaQuery } from "react-responsive";
-import SocialsIcons from "@/components/SocialsIcons/SocialsIcons";
+import SocialsIcons from "@/components/global/SocialsIcons/SocialsIcons";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
