@@ -25,12 +25,13 @@
 @media (max-width: 590px) {
 
     .header{
-        flex-direction: column;
+        flex-direction: row;
+        gap: 20px;
         justify-content: center;
         padding: 0;
 
         .logo{
-            display: none;
+            // display: none;
         }
     }
 }
