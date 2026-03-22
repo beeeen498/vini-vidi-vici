@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import styles from "./FoodItemCard.module.scss";
 import Image from "next/image";
 
@@ -6,17 +6,15 @@ type Props = {
   title: string;
   description: string;
   price: number;
-  src?: string,
   image?: string;
 };
 
-const MenuItemCard = ({title, description, price, image}: Props) => {
-
+const FoodItemCard = ({ title, description, price, image }: Props) => {
   return (
     <div className={styles.menuItemCard}>
-      {/* img */}
+      {/* image */}
       <div className={styles.menuItemImgWrapper}>
-        <Image 
+        <Image
           src={image || "/images/menu/placeholder.jpg"}
           alt={title}
           fill
@@ -30,13 +28,14 @@ const MenuItemCard = ({title, description, price, image}: Props) => {
         {/* text */}
         <div className={styles.menuItemText}>
           <h3>{title}</h3>
-          <p>{description}</p>
+          <p className={styles.itemDescription}>{description}</p>
         </div>
 
+        {/* price */}
         <div className={styles.menuItemPrice}>- ${price}</div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default MenuItemCard
+export default FoodItemCard;

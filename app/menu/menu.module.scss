@@ -87,12 +87,14 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        width: 100%;
 
         .drinkCategory {
-            min-width: 33.3%;
+            min-width: 350px;
+            box-sizing: border-box; 
             padding: 20px;
 
-            h2{
+            h2 {
                 text-align: left;
             }
         }
@@ -116,6 +118,7 @@
     .variant1 {
         background: var(--black);
         color: var(--white);
+        border: .5px solid var(--white);
 
         h2 {
             color: var(--gold);
