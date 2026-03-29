@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 import styles from "./About.module.scss";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -43,7 +44,7 @@ const About = () => {
 
             <div className={styles.btn}>
                 {/* button */}
-                <button>reserve table</button>
+                <button><Link href="/#reserve">reserve table</Link></button>
             </div>
         </div>
 

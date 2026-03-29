@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/all";
 import styles from "./Hero.module.scss";
 import { useMediaQuery } from "react-responsive";
+import Link from "next/link";
 import SocialsIcons from "@/components/global/SocialsIcons/SocialsIcons";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -154,7 +155,7 @@ const Hero = () => {
               conquer your taste buds.
             </p>
 
-            <button>our menu</button>
+            <button><Link href="/menu">our menu</Link></button>
           </div>
         </div>
       </div>

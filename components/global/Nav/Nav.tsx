@@ -1,28 +1,49 @@
 "use client";
 
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect } from "react";
 import Link from "next/link";
 import styles from "./Nav.module.scss";
 
 const Nav = () => {
+  const router = useRouter();
+  const pathname = usePathname();
+
+  const handleClick = (hash: string) => {
+    if (pathname === "/") {
+      const el = document.getElementById(hash);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.location.href = `/#${hash}`; 
+    }
+  };
+
+  useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.replace("#", "");
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" });
+        }, 50);
+      }
+    }
+  }, []);
+
   return (
     <nav className={styles.nav}>
       <ul className={styles.navList}>
-        {/* page */}
         <li className={styles.navListItem}>
           <Link href="/menu">Menu</Link>
         </li>
-
-        {/* sections on homepage */}
         <li className={styles.navListItem}>
-          <Link href="/#about">About Us</Link>
+          <a onClick={() => handleClick("about")}>About Us</a>
         </li>
-
         <li className={styles.navListItem}>
-          <Link href="/#reserve">Reserve Table</Link>
+          <a onClick={() => handleClick("reserve")}>Reserve Table</a>
         </li>
-
         <li className={styles.navListItem}>
-          <Link href="/#contact">Contact</Link>
+          <a onClick={() => handleClick("contact")}>Contact</a>
         </li>
       </ul>
     </nav>
