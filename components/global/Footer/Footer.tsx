@@ -29,7 +29,7 @@ const Footer = () => {
 
         {/* credits */}
         <div className={styles.footerCredits}>
-            <p>Created by <span><Link href={""}>Ben Kedem.</Link></span> <span><Link href="">Credits for Images</Link></span></p>
+            <p>Created by <span><Link href={""}>Ben Kedem.</Link></span> <span><Link href="/credits">Credits for Images</Link></span></p>
         </div>
     </footer>
   )
