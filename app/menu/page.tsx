@@ -1,5 +1,7 @@
 "use client";
+import type { Metadata } from "next";
 import { useEffect, useState } from "react";
+import LazySection from "@/components/menu/LazySection/LazySection";
 import styles from "./menu.module.scss";
 import MenuCategorySelector from "@/components/menu/MenuCategorySelector/MenuCategorySelector";
 import FoodItemCard from "@/components/menu/FoodItemCard/FoodItemCard";
@@ -26,7 +28,7 @@ export default function Menu() {
       <div className={styles.noiseFilter}></div>
 
       {/* arrow */}
-      <FaArrowAltCircleUp 
+      <FaArrowAltCircleUp
         className={`${styles.arrowIcon} ${showArrow ? styles.show : ""}`}
         size={40}
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -37,20 +39,24 @@ export default function Menu() {
         <h2>OUR MENU</h2>
         <h3>Savor the Taste of Italy</h3>
         <p>
-          Explore our carefully crafted menu featuring fresh ingredients,<br />
-          authentic recipes, and timeless Italian dishes to satisfy your cravings.
+          Explore our carefully crafted menu featuring fresh ingredients,
+          <br />
+          authentic recipes, and timeless Italian dishes to satisfy your
+          cravings.
         </p>
       </div>
 
       <MenuCategorySelector />
 
       <div className={styles.mainMenu}>
-        
         {/* FOOD */}
         <div className={styles.menuItems}>
           {menuData.food.map((category) => (
-            <div key={category.id} id={category.id} className={styles.foodCategory}>
-              
+            <LazySection
+              key={category.id}
+              id={category.id}
+              className={styles.foodCategory}
+            >
               {/* decoration */}
               <div className={styles.categoryDecoration}>
                 <Image
@@ -72,7 +78,7 @@ export default function Menu() {
                   image={item.image}
                 />
               ))}
-            </div>
+            </LazySection>
           ))}
         </div>
 
@@ -102,13 +108,12 @@ export default function Menu() {
                   title={item.name}
                   detail={item.detail}
                   country={item.country}
-                  price={parseFloat(item.price.replace("$", ""))}
+                  price={item.price}
                 />
               ))}
             </div>
           ))}
         </div>
-
       </div>
     </div>
   );

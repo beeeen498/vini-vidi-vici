@@ -1,11 +1,11 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/all";
 import styles from "./Hero.module.scss";
-import { useMediaQuery } from "react-responsive";
 import Link from "next/link";
 import SocialsIcons from "@/components/global/SocialsIcons/SocialsIcons";
 
@@ -15,10 +15,18 @@ const Hero = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const pathname = usePathname();
+  const [isMobile, setIsMobile] = useState(false);
 
   useLayoutEffect(() => {
     if (!headingRef.current || !videoRef.current) return;
+
+    // reset scroll and kill old instances
+    window.scrollTo(0, 0);
+    ScrollTrigger.getAll().forEach((t) => t.kill());
+    ScrollTrigger.refresh();
+
+    const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
     const ctx = gsap.context(() => {
       const video = videoRef.current!;
@@ -28,9 +36,7 @@ const Hero = () => {
         type: "chars, words",
       });
 
-      const subtitleElements = document.querySelectorAll(
-        `.${styles.subtitle}`
-      );
+      const subtitleElements = document.querySelectorAll(`.${styles.subtitle}`);
 
       const paragraphSplit = new SplitText(subtitleElements, {
         type: "lines",
@@ -79,20 +85,22 @@ const Hero = () => {
       const endValue = isMobile ? "120% top" : "bottom top";
 
       const initScrollVideo = () => {
-        gsap.timeline({
-          scrollTrigger: {
-            trigger: video,
-            start: startValue,
-            end: endValue,
-            scrub: true,
-            pin: true,
-            invalidateOnRefresh: true,
-          },
-        }).to(video, {
-          currentTime: video.duration,
-          ease: "none",
-          onUpdate: () => video.pause(),
-        });
+        gsap
+          .timeline({
+            scrollTrigger: {
+              trigger: video,
+              start: startValue,
+              end: endValue,
+              scrub: true,
+              pin: true,
+              invalidateOnRefresh: true,
+            },
+          })
+          .to(video, {
+            currentTime: video.duration,
+            ease: "none",
+            onUpdate: () => video.pause(),
+          });
       };
 
       if (video.readyState >= 1) {
@@ -108,7 +116,7 @@ const Hero = () => {
     }, containerRef);
 
     return () => ctx.revert();
-  }, [isMobile]);
+  }, [isMobile, pathname]);
 
   return (
     <section id="hero" className={styles.hero} ref={containerRef}>
@@ -155,7 +163,9 @@ const Hero = () => {
               conquer your taste buds.
             </p>
 
-            <button><Link href="/menu">our menu</Link></button>
+            <button>
+              <Link href="/menu">our menu</Link>
+            </button>
           </div>
         </div>
       </div>

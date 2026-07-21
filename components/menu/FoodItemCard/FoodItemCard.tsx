@@ -19,6 +19,7 @@ const FoodItemCard = ({ title, description, price, image }: Props) => {
           alt={title}
           fill
           sizes="(max-width: 768px) 100vw, 250px"
+          quality={60}
           className={styles.menuItemImg}
         />
       </div>

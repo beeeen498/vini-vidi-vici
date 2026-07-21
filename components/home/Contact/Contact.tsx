@@ -14,9 +14,14 @@ const Contact = () => {
     email: "",
     message: "",
   });
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
   function handleChange(
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) {
     setFormData({
       ...formData,
@@ -24,13 +29,19 @@ const Contact = () => {
     });
   }
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    if (!formData.name || !formData.email || !formData.message) {
-      alert("Please fill all fields");
-      return;
-    }
+    const newErrors = { name: "", email: "", message: "" };
+
+    if (!formData.name.trim()) newErrors.name = "Please enter your name";
+    if (!formData.email.trim()) newErrors.email = "Please enter your email";
+    if (!formData.message.trim()) newErrors.message = "Please enter a message";
+
+    setErrors(newErrors);
+
+    // if any errors, stop
+    if (newErrors.name || newErrors.email || newErrors.message) return;
 
     setIsClicked(true);
 
@@ -59,8 +70,11 @@ const Contact = () => {
       },
     });
 
-    tl.to(rightLeafRef.current, { y: -300 }, 0)
-      .to(leftLeafRef.current, { y: 300 }, 0);
+    tl.to(rightLeafRef.current, { y: -300 }, 0).to(
+      leftLeafRef.current,
+      { y: 300 },
+      0,
+    );
 
     return () => {
       tl.kill();
@@ -92,7 +106,7 @@ const Contact = () => {
           <div className={styles.contactUsHeading}>
             <h2>Get in Touch</h2>
             <p>
-              Have a question about our menu, private dining, or special events? 
+              Have a question about our menu, private dining, or special events?
               We’d be delighted to hear from you.
             </p>
           </div>
@@ -106,8 +120,10 @@ const Contact = () => {
               maxLength={20}
               value={formData.name}
               onChange={handleChange}
-              required
             />
+            {errors.name && (
+              <span className={styles.errorMsg}>{errors.name}</span>
+            )}
 
             <input
               className={styles.contactUsInput}
@@ -116,8 +132,10 @@ const Contact = () => {
               placeholder="Enter Email"
               value={formData.email}
               onChange={handleChange}
-              required
             />
+            {errors.email && (
+              <span className={styles.errorMsg}>{errors.email}</span>
+            )}
 
             <textarea
               name="message"
@@ -125,8 +143,10 @@ const Contact = () => {
               className={`${styles.contactUsInput} ${styles.contactUsTextarea}`}
               value={formData.message}
               onChange={handleChange}
-              required
             />
+            {errors.message && (
+              <span className={styles.errorMsg}>{errors.message}</span>
+            )}
 
             <button
               className={`${styles.contactUsInput} ${
@@ -142,17 +162,17 @@ const Contact = () => {
 
       {/* leaves */}
       <div className={styles.leavesDiv}>
-        <img 
+        <img
           ref={rightLeafRef}
           className={`${styles.rightLeaf}`}
-          src="/images/Contact/right-leaf.png" 
-          alt="leaf" 
+          src="/images/Contact/right-leaf.png"
+          alt="leaf"
         />
-        <img 
+        <img
           ref={leftLeafRef}
           className={`${styles.leftLeaf}`}
-          src="/images/Contact/left-leaf.png" 
-          alt="leaf" 
+          src="/images/Contact/left-leaf.png"
+          alt="leaf"
         />
       </div>
     </section>
