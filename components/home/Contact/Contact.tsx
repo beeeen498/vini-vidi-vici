@@ -1,13 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import LazyVideo from "@/components/global/LazyVideo/LazyVideo";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 import styles from "./Contact.module.scss";
 
 const Contact = () => {
-  const headerHeight = 70;
   const [isClicked, setIsClicked] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -86,12 +87,8 @@ const Contact = () => {
       <div className={styles.contactContent}>
         {/* video */}
         <div className={styles.contactVideoContainer}>
-          <video
+          <LazyVideo
             src="/videos/Contact/pizza.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
             className={styles.contactVideo}
           />
           <div className={styles.videoLines}>
@@ -162,17 +159,23 @@ const Contact = () => {
 
       {/* leaves */}
       <div className={styles.leavesDiv}>
-        <img
+        <Image
           ref={rightLeafRef}
-          className={`${styles.rightLeaf}`}
+          className={styles.rightLeaf}
           src="/images/Contact/right-leaf.png"
           alt="leaf"
+          width={100}
+          height={220}
+          style={{ objectFit: "contain", width: "auto", height: "auto" }}
         />
-        <img
+        <Image
           ref={leftLeafRef}
-          className={`${styles.leftLeaf}`}
+          className={styles.leftLeaf}
           src="/images/Contact/left-leaf.png"
           alt="leaf"
+          width={100}
+          height={200}
+          style={{ objectFit: "contain", width: "auto", height: "auto" }}
         />
       </div>
     </section>

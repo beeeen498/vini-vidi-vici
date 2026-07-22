@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import LazyVideo from "@/components/global/LazyVideo/LazyVideo";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import styles from "./ReserveTable.module.scss";
@@ -51,12 +52,8 @@ const ReserveTable = () => {
   return (
     <section id="reserve" className={styles.reservationSection}>
       {/* video */}
-      <video
+      <LazyVideo
         src="/videos/Reserve/date.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
         className={styles.reserveVideo}
       />
 

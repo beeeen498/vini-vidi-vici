@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Mona_Sans } from "next/font/google";
+import StructuredData from "@/components/global/StructuredData/StructuredData";
 import Header from "@/components/global/Header/Header";
 import Footer from "@/components/global/Footer/Footer";
 import "@/styles/main.scss";
@@ -40,6 +41,7 @@ export default function RootLayout({
       className={`${monaSans.variable} ${playfair.variable}`}
     >
       <body>
+        <StructuredData />
         <script
           dangerouslySetInnerHTML={{
             __html: `if (window.location.hash) document.documentElement.classList.add('preScroll');`,
