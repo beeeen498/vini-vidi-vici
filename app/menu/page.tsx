@@ -12,8 +12,25 @@ import { FaArrowAltCircleUp } from "react-icons/fa";
 
 export default function Menu() {
   const [showArrow, setShowArrow] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
+    const handleScroll = () => {
+      setShowArrow(window.scrollY > 200);
+
+      // calculate scroll progress
+      const totalHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = totalHeight > 0 ? window.scrollY / totalHeight : 0;
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
     const handleScroll = () => {
       setShowArrow(window.scrollY > 200);
     };
@@ -27,12 +44,40 @@ export default function Menu() {
       {/* noise filter */}
       <div className={styles.noiseFilter}></div>
 
-      {/* arrow */}
-      <FaArrowAltCircleUp
-        className={`${styles.arrowIcon} ${showArrow ? styles.show : ""}`}
-        size={40}
+      {/* back to top progress ring */}
+      <div
+        className={`${styles.progressRing} ${showArrow ? styles.show : ""}`}
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      />
+      >
+        <svg viewBox="-2 -2 60 60" width="56" height="56">
+          {/* background circle */}
+          <circle cx="28" cy="28" r="24" />
+
+          {/* progress circle */}
+          <circle
+            cx="28"
+            cy="28"
+            r="24"
+            fill="none"
+            stroke="#E6D393"
+            strokeWidth="3"
+            strokeLinecap="round"
+            strokeDasharray={`${2 * Math.PI * 24}`}
+            strokeDashoffset={`${2 * Math.PI * 24 * (1 - scrollProgress)}`}
+            transform="rotate(-90 28 28)"
+          />
+
+          {/* arrow */}
+          <path
+            d="M28 36 L28 20 M22 26 L28 20 L34 26"
+            fill="none"
+            stroke="#E6D393"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
 
       {/* title */}
       <div className={styles.menuTitleContainer}>

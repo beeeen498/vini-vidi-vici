@@ -1,64 +1,59 @@
 "use client";
 
-import { useLayoutEffect, useRef, useState } from "react";
-import { usePathname } from "next/navigation";
+import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/all";
-import styles from "./Hero.module.scss";
+import { useGSAP } from "@gsap/react";
 import Link from "next/link";
+import styles from "./Hero.module.scss";
 import SocialsIcons from "@/components/global/SocialsIcons/SocialsIcons";
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+gsap.registerPlugin(useGSAP, ScrollTrigger, SplitText);
+
+// jump to a #hash section once the layout is final (used when arriving from another page)
+function handleHashScroll() {
+  const hash = window.location.hash.slice(1);
+  const el = hash ? document.getElementById(hash) : null;
+
+  if (!el) {
+    document.documentElement.classList.remove("preScroll");
+    return;
+  }
+
+  history.replaceState(null, "", window.location.pathname);
+
+  // wait for the pin to fully settle, scroll once, then reveal
+  setTimeout(() => {
+    const y = el.getBoundingClientRect().top + window.scrollY - 70;
+    window.scrollTo({ top: y });
+    document.documentElement.classList.remove("preScroll");
+  }, 400);
+}
 
 const Hero = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const pathname = usePathname();
-  const [isMobile, setIsMobile] = useState(false);
 
-  useLayoutEffect(() => {
-    if (!headingRef.current || !videoRef.current) return;
-
-    // reset scroll and kill old instances
-    window.scrollTo(0, 0);
-    ScrollTrigger.getAll().forEach((t) => t.kill());
-    ScrollTrigger.refresh();
-
-    const isMobile = window.matchMedia("(max-width: 767px)").matches;
-
-    const ctx = gsap.context(() => {
+  useGSAP(
+    () => {
       const video = videoRef.current!;
+      const isMobile = window.matchMedia("(max-width: 767px)").matches;
 
-      // Split text
+      // --- split text ---
       const split = new SplitText(headingRef.current!, {
         type: "chars, words",
       });
-
       const subtitleElements = document.querySelectorAll(`.${styles.subtitle}`);
+      const paragraphSplit = new SplitText(subtitleElements, { type: "lines" });
 
-      const paragraphSplit = new SplitText(subtitleElements, {
-        type: "lines",
-      });
-
-      // Hide before animation (prevents FOUC)
       gsap.set([headingRef.current, ...subtitleElements], {
         visibility: "visible",
       });
+      gsap.set(split.chars, { yPercent: 100, opacity: 0 });
+      gsap.set(paragraphSplit.lines, { yPercent: 100, opacity: 0 });
 
-      // Set initial state
-      gsap.set(split.chars, {
-        yPercent: 100,
-        opacity: 0,
-      });
-
-      gsap.set(paragraphSplit.lines, {
-        yPercent: 100,
-        opacity: 0,
-      });
-
-      // Animate heading
       gsap.to(split.chars, {
         yPercent: 0,
         opacity: 1,
@@ -66,8 +61,6 @@ const Hero = () => {
         ease: "expo.out",
         stagger: 0.06,
       });
-
-      // Animate subtitle
       gsap.to(paragraphSplit.lines, {
         yPercent: 0,
         opacity: 1,
@@ -77,19 +70,21 @@ const Hero = () => {
         delay: 1,
       });
 
-      // Video scroll animation
+      // --- video scrub on scroll ---
       video.pause();
       video.currentTime = 0;
-
-      const startValue = "top top";
       const endValue = isMobile ? "120% top" : "bottom top";
 
-      const initScrollVideo = () => {
+      let built = false;
+      const buildVideoScroll = () => {
+        if (built) return; // guard against double init
+        built = true;
+
         gsap
           .timeline({
             scrollTrigger: {
               trigger: video,
-              start: startValue,
+              start: "top top",
               end: endValue,
               scrub: true,
               pin: true,
@@ -97,26 +92,29 @@ const Hero = () => {
             },
           })
           .to(video, {
-            currentTime: video.duration,
+            currentTime: video.duration || 0,
             ease: "none",
             onUpdate: () => video.pause(),
           });
+
+        // the pin changes page height — positions are only correct after a refresh
+        ScrollTrigger.refresh();
+
+        // now that layout is final, honor any #hash we arrived with
+        handleHashScroll();
       };
 
+      // readyState check handles the cached-video case; the listener handles first load
       if (video.readyState >= 1) {
-        initScrollVideo();
+        buildVideoScroll();
       } else {
-        video.addEventListener("loadedmetadata", initScrollVideo);
+        video.addEventListener("loadedmetadata", buildVideoScroll, {
+          once: true,
+        });
       }
-
-      return () => {
-        split.revert();
-        paragraphSplit.revert();
-      };
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, [isMobile, pathname]);
+    },
+    { scope: containerRef }, // useGSAP auto-reverts everything created here on unmount
+  );
 
   return (
     <section id="hero" className={styles.hero} ref={containerRef}>
@@ -148,21 +146,17 @@ const Hero = () => {
             <h2 className={`${styles.heroSlogan} ${styles.subtitle}`}>
               Lose Yourself to <br /> Italian Flavor
             </h2>
-
-            {/* icons */}
             <div className={styles.socialIcons}>
               <SocialsIcons size={25} />
             </div>
           </div>
 
-          {/* paragraph */}
           <div className={styles.paragraphAndBtn}>
             <p className={`${styles.heroParagraph} ${styles.subtitle}`}>
               Vini Vidi Vici serves modern Italian cuisine crafted from fresh
               ingredients, bold flavors, and authentic recipes — designed to
               conquer your taste buds.
             </p>
-
             <button>
               <Link href="/menu">our menu</Link>
             </button>
