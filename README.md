@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Veni, Vidi, Vici 🍷
 
-## Getting Started
+A modern Italian restaurant website showcasing scroll-driven animations, responsive design, and production-grade frontend engineering.
 
-First, run the development server:
+**Live demo:** [vini-vidi-vici.vercel.app](https://vini-vidi-vici.vercel.app)
+
+Add screenshots here once you have them:
+![Hero](./screenshots/hero.png)
+![Menu](./screenshots/menu.png)
+
+## About
+
+Veni Vidi Vici is a fictional Italian restaurant concept built as a frontend portfolio piece. The focus is on polished motion design, performance, and clean, maintainable code — a scroll-scrubbing video hero, animated sections, and a fully responsive layout.
+
+## Tech Stack
+
+- **Framework:** Next.js (App Router)
+- **Language:** TypeScript
+- **Styling:** SCSS Modules
+- **Animation:** GSAP (ScrollTrigger, SplitText) via `@gsap/react`
+- **Testing:** Playwright (E2E)
+- **Deployment:** Vercel
+
+## Features
+
+- **Scroll-scrubbing video hero** — the hero video plays frame-by-frame as you scroll, powered by GSAP ScrollTrigger with pinning
+- **Animated sections** — text and galleries reveal on scroll with staggered GSAP animations
+- **Interactive menu** — sticky category selector with active states and smooth scroll-to-section navigation
+- **Reservation form** — with date picker, past-time disabling, inline validation, and a confirmation toast
+- **Responsive mobile nav** — fullscreen hamburger menu overlay
+- **Contact form** — with inline validation
+- **Performance-optimized** — compressed and lazy-loaded videos, Next.js image optimization (AVIF/WebP), and intersection-observer lazy loading
+- **SEO-ready** — per-page metadata, `robots.ts`, `sitemap.ts`, and JSON-LD Restaurant structured data
+- **Accessible** — semantic markup, ARIA labels, and keyboard-navigable links
+- **Custom error handling** — 404 page and error boundary
+
+## Running Locally
 
 ```bash
+# clone the repo
+git clone https://github.com/beeeen498/vini-vidi-vici.git
+cd vini-vidi-vici
+
+# install dependencies
+npm install
+
+# run the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view it.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Testing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+End-to-end tests are written with Playwright, covering the reservation flow and page navigation across Chromium, Firefox, and WebKit.
 
-## Learn More
+```bash
+# run all tests
+npx playwright test
 
-To learn more about Next.js, take a look at the following resources:
+# run with the interactive UI
+npx playwright test --ui
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Credits
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Image and video credits are listed on the [credits page](https://vini-vidi-vici.vercel.app/credits).
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Created by **Ben Kedem**.

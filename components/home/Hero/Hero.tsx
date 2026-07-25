@@ -153,7 +153,7 @@ const Hero = () => {
 
           <div className={styles.paragraphAndBtn}>
             <p className={`${styles.heroParagraph} ${styles.subtitle}`}>
-              Vini Vidi Vici serves modern Italian cuisine crafted from fresh
+              Veni Vidi Vici serves modern Italian cuisine crafted from fresh
               ingredients, bold flavors, and authentic recipes — designed to
               conquer your taste buds.
             </p>
